@@ -19,6 +19,8 @@ namespace MPOrdenes.Pages.Ordenes
         private readonly ICrudApi<EncOrdenesCompraViewModel, int> service;
         private readonly ICrudApi<OrdenesViewModel, int> serviceO;
         private readonly ICrudApi<ExistenciasViewModel, int> serviceE;
+        private readonly ICrudApi<FabricacionViewModel, int> serviceF;
+
 
 
         [BindProperty]
@@ -30,11 +32,12 @@ namespace MPOrdenes.Pages.Ordenes
         [BindProperty]
         public ExistenciasViewModel Existencias { get; set; }
 
-        public ObservarModel(ICrudApi<EncOrdenesCompraViewModel, int> service, ICrudApi<OrdenesViewModel, int> serviceO, ICrudApi<ExistenciasViewModel, int> serviceE)
+        public ObservarModel(ICrudApi<EncOrdenesCompraViewModel, int> service, ICrudApi<OrdenesViewModel, int> serviceO, ICrudApi<ExistenciasViewModel, int> serviceE, ICrudApi<FabricacionViewModel, int> serviceF)
         {
             this.service = service;
             this.serviceO = serviceO;
             this.serviceE = serviceE;
+            this.serviceF = serviceF;
         }
 
         public async Task<IActionResult> OnGetAsync(int id)
@@ -61,5 +64,7 @@ namespace MPOrdenes.Pages.Ordenes
                 return Page();
             }
         }
+
+       
     }
 }

@@ -25,11 +25,10 @@ namespace Sicsoft.Checkin.Web.Servicios
         [Get("")]
         Task<TEntity[]> ObtenerLista<TQuery>(TQuery q);
 
-        [Get("/Compañias")]
-        Task<TEntity[]> ObtenerCompañias(string email);
 
-        [Get("")]
+        [Get("/")]
         Task<TEntity> ObtenerListaEspecial<TQuery>(TQuery q);
+
 
         [Get("/Consultar")]
         Task<TEntity> ObtenerPorId(int id);

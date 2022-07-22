@@ -24,5 +24,7 @@ namespace InversionGloblalWeb.Models
         public int NumCierre { get; set; }
         public string Texto2 { get; set; }
         public string Texto3 { get; set; }
+        public string Categoria { get; set; }
+
     }
 }
