@@ -45,7 +45,13 @@
                         }
 
                     }
-                    
+                    @{if (!string.IsNullOrEmpty(Roles.Where(a => a == "9").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/Generados/Index"><i class="mdi mdi-alert-circle"></i>Docs Generados</a></li>
+                        }
+
+                    }
                 </ul>
             </li>
             

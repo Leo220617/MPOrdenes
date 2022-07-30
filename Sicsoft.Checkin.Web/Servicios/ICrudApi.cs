@@ -24,7 +24,14 @@ namespace Sicsoft.Checkin.Web.Servicios
 
         [Get("")]
         Task<TEntity[]> ObtenerLista<TQuery>(TQuery q);
+        [Get("/Emision")]
+        Task<TEntity[]> GenerarEmision<TQuery>(TQuery q);
 
+        [Get("/InsertarOrdenes")]
+        Task<TEntity[]> InsertarOrdenes<TQuery>(TQuery q);
+
+        [Get("/Recibo")]
+        Task<TEntity[]> GenerarRecibo<TQuery>(TQuery q);
 
         [Get("/")]
         Task<TEntity> ObtenerListaEspecial<TQuery>(TQuery q);

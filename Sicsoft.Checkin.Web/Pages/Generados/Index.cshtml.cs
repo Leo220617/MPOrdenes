@@ -12,19 +12,19 @@ using Newtonsoft.Json;
 using Refit;
 using Sicsoft.Checkin.Web.Servicios;
 
-namespace MPOrdenes.Pages.Ordenes
+namespace MPOrdenes.Pages.Generados
 {
     public class IndexModel : PageModel
     {
-        private readonly ICrudApi<EncOrdenesCompraViewModel, int> service;
+        private readonly ICrudApi<GeneradosViewModel, int> service;
 
         [BindProperty(SupportsGet = true)]
         public ParametrosFiltros filtro { get; set; }
 
         [BindProperty]
-        public EncOrdenesCompraViewModel[] Objeto { get; set; }
+        public GeneradosViewModel[] Objeto { get; set; }
 
-        public IndexModel(ICrudApi<EncOrdenesCompraViewModel, int> service)
+        public IndexModel(ICrudApi<GeneradosViewModel, int> service)
         {
             this.service = service;
         }
@@ -33,11 +33,10 @@ namespace MPOrdenes.Pages.Ordenes
             try
             {
                 var Roles = ((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "Roles").Select(s1 => s1.Value).FirstOrDefault().Split("|");
-                if (string.IsNullOrEmpty(Roles.Where(a => a == "7").FirstOrDefault()))
+                if (string.IsNullOrEmpty(Roles.Where(a => a == "9").FirstOrDefault()))
                 {
                     return RedirectToPage("/NoPermiso");
                 }
-                await service.InsertarOrdenes("");
                 Objeto = await service.ObtenerLista(filtro);
 
 
@@ -47,11 +46,6 @@ namespace MPOrdenes.Pages.Ordenes
             {
                 Errores error = JsonConvert.DeserializeObject<Errores>(ex.Content.ToString());
                 ModelState.AddModelError(string.Empty, error.Message);
-
-                return Page();
-            } catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
 
                 return Page();
             }

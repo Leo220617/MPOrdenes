@@ -106,8 +106,79 @@ namespace MPOrdenes.Pages.Ordenes
                 return new JsonResult(obj);
             }
         }
-        
-        
+
+
+        //Generar Emision de Produiccion
+
+        public async Task<IActionResult> OnGetEmision(string id)
+        {
+            try
+            {
+                ParametrosFiltros filt = new ParametrosFiltros();
+                filt.Codigo1 = Convert.ToInt32(id);
+                await serviceF.GenerarEmision(filt);
+
+                
+
+
+                var obj = new
+                {
+                    success = true,
+                    mensaje = ""
+                };
+
+                return new JsonResult(obj);
+
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError(string.Empty, ex.Message);
+
+                var obj = new
+                {
+                    success = false,
+                    mensaje = "Error en el exception: -> " + ex.Message
+                };
+                return new JsonResult(obj);
+            }
+        }
+
+        //Generar Recibo de Produccion
+        public async Task<IActionResult> OnGetRecibo(string id)
+        {
+            try
+            {
+                ParametrosFiltros filt = new ParametrosFiltros();
+                filt.Codigo1 = Convert.ToInt32(id);
+                await serviceF.GenerarRecibo(filt);
+
+
+
+
+                var obj = new
+                {
+                    success = true,
+                    mensaje = ""
+                };
+
+                return new JsonResult(obj);
+
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError(string.Empty, ex.Message);
+
+                var obj = new
+                {
+                    success = false,
+                    mensaje = "Error en el exception: -> " + ex.Message
+                };
+                return new JsonResult(obj);
+            }
+        }
+
         public async Task<IActionResult> OnPostProduccion(AgrupadoProduccionViewModel[] recibido)
         {
             try

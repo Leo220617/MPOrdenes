@@ -149,6 +149,10 @@ namespace Sicsoft.Checkin.Web
    .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{Configuration["UrlWebApi"]}/api/BitacoraErrores"))
    .AddHttpMessageHandler<AuthenticatedHttpClientHandler>();
 
+            services.AddRefitClient<ICrudApi<GeneradosViewModel, int>>()
+   .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{Configuration["UrlWebApi"]}/api/Generados"))
+   .AddHttpMessageHandler<AuthenticatedHttpClientHandler>();
+
             services.AddRefitClient<ICrudApi<EncOrdenesCompraViewModel, int>>()
    .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{Configuration["UrlWebApi"]}/api/Ordenes"))
    .AddHttpMessageHandler<AuthenticatedHttpClientHandler>();
