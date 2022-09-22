@@ -477,7 +477,7 @@
                             <address>
                                 <strong class="text-blue font-size-24">@Model.Orden.CardName</strong><br>
                                 @Model.Orden.CardCode<br>
-
+                               Status:  @(Model.Orden.Detalle.FirstOrDefault() != null ? Model.Orden.Detalle.FirstOrDefault().Status: "")
                             </address>
                         </div>
                         <!-- /.col -->
